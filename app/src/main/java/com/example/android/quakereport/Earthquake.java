@@ -9,7 +9,7 @@ public class Earthquake {
     private String mLocation;
 
     /** Time of the earthquake */
-    private String mDate;
+    private long mTimeInMilliseconds;
 
 
     /**
@@ -17,12 +17,12 @@ public class Earthquake {
      *
      * @param magnitude is the magnitude (size) of the earthquake
      * @param location is the location where the earthquake happened
-     * @param date is the date the earthquate occured
+     * @param timeInMilliseconds is the date the earthquate occured
      */
-    public Earthquake(String magnitude, String location, String date) {
+    public Earthquake(String magnitude, String location, long timeInMilliseconds) {
         mMagnitude = magnitude;
         mLocation = location;
-        mDate = date;
+        mTimeInMilliseconds = timeInMilliseconds;
     }
 
     /**
@@ -42,8 +42,8 @@ public class Earthquake {
     /**
      * Returns the time of the earthquake.
      */
-    public String getDate() {
-        return mDate;
+    public long getTimeInMilliseconds() {
+        return mTimeInMilliseconds;
     }
 
 }

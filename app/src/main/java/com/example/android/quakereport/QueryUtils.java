@@ -66,7 +66,7 @@ public final class QueryUtils {
                 /* get the valeues using key mag, place, & time*/
                 String magnitude = properties.getString("mag");
                 String place = properties.getString("place");
-                String time = properties.getString("time");
+                long time = properties.getLong("time");
 
                 //create an instance of the new object class and initialize the values
                 Earthquake earthquakeObjectClassInstance = new Earthquake(magnitude, place, time);
