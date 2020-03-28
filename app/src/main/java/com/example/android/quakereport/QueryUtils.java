@@ -67,9 +67,10 @@ public final class QueryUtils {
                 double magnitude = properties.getDouble("mag");
                 String place = properties.getString("place");
                 long time = properties.getLong("time");
+                String url = properties.getString("url");
 
                 //create an instance of the new object class and initialize the values
-                Earthquake earthquakeObjectClassInstance = new Earthquake(magnitude, place, time);
+                Earthquake earthquakeObjectClassInstance = new Earthquake(magnitude, place, time, url);
 
                 //Add it to the ArrayList
                 earthquakes.add(earthquakeObjectClassInstance);
