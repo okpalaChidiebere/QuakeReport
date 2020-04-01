@@ -7,6 +7,7 @@ import androidx.loader.content.Loader;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,17 +35,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(LOG_TAG, "TEST: Earthquake activity onCreate called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Get a reference to the LoaderManager, in order to interact with loaders.
-        LoaderManager loaderManager = LoaderManager.getInstance(this);
-
-        // Initialize the loader. Pass in the int ID constant defined above and pass in null for
-        // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
-        // because this activity implements the LoaderCallbacks interface).
-        loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
-
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
@@ -73,18 +66,30 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
+        // Get a reference to the LoaderManager, in order to interact with loaders.
+        LoaderManager loaderManager = LoaderManager.getInstance(this);
+
+        // Initialize the loader. Pass in the int ID constant defined above and pass in null for
+        // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
+        // because this activity implements the LoaderCallbacks interface).
+        Log.i(LOG_TAG, "TEST: initialising loader");
+        loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
 
     }
 
 
     @Override
     public Loader<List<Earthquake>> onCreateLoader(int i, Bundle bundle) {
+        Log.i(LOG_TAG, "TEST: onCreateLoaer() creating a loader for the USGS request URL");
         // Create a new loader for the given URL
         return new EarthquakeLoader(this, USGS_REQUEST_URL);
     }
 
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> earthquakes) {
+
+        Log.i(LOG_TAG, "TEST: OnLoaderFinished. updating listView UI");
+
         // Clear the adapter of previous earthquake data
         mAdapter.clear();
 
@@ -97,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoaderReset(Loader<List<Earthquake>> loader) {
+
+        Log.i(LOG_TAG, "TEST: On Loader Reset. clearing the adapter");
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
     }

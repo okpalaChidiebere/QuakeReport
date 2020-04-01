@@ -1,10 +1,13 @@
 package com.example.android.quakereport;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.List;
 
 import androidx.loader.content.AsyncTaskLoader;
+
+import static com.example.android.quakereport.MainActivity.LOG_TAG;
 
 /**
  * Loads a list of earthquakes by using an AsyncTask to perform the
@@ -26,8 +29,12 @@ public class EarthquakeLoader extends AsyncTaskLoader<List<Earthquake>> {
         mUrl = url;
     }
 
+    //required step to actually trigger the loadInBackground() method to execute.
     @Override
     protected void onStartLoading() {
+
+        Log.i(LOG_TAG, "TEST: OnStartLoading. clling forceLoad to trigger the loadInBackground method");
+
         forceLoad();
     }
 
@@ -39,6 +46,8 @@ public class EarthquakeLoader extends AsyncTaskLoader<List<Earthquake>> {
         if (mUrl == null) {
             return null;
         }
+
+        Log.i(LOG_TAG, "TEST: performing backgroud thread.");
 
         // Perform the network request, parse the response, and extract a list of earthquakes.
         List<Earthquake> earthquakes = QueryUtils.fetchEarthquakeData(mUrl);
