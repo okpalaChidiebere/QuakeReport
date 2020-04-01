@@ -97,6 +97,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         Log.i(LOG_TAG, "TEST: OnLoaderFinished. updating listView UI");
 
+        // Hide loading indicator because the data has been loaded
+        View loadingIndicator = findViewById(R.id.loading_indicator);
+        loadingIndicator.setVisibility(View.GONE);
+
         /*To avoid the “No earthquakes found.” message blinking on the screen when the app first launches,
         we can leave the empty state TextView blank, until the first load completes*/
         // Set empty state text to display "No earthquakes found." or the results came back from the
