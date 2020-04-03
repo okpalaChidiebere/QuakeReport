@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Layout for our Settings Activity, containing a Preference Fragment -->
 <fragment
     android:name="com.example.android.quakereport.SettingsActivity$EarthquakePreferenceFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
