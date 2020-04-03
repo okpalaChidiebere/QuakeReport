@@ -16,6 +16,8 @@
 
     <!-- Strings to be used for the Preference Labels -->
     <string name="settings_min_magnitude_label">Minimum Magnitude</string>
+    <!-- You always use the key name to reference the default value below or the custom value if changed
+    at the xml preference page. This should be unique name to each preference input-->
     <string name="settings_min_magnitude_key" translatable="false">min_magnitude</string>
     <string name="settings_min_magnitude_default" translatable="false">0</string>
 </resources>
